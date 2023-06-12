@@ -98,7 +98,7 @@ export const login = async (req,res,next)=>{
     try {
         existingUser = await User.findOne({ email })                
     } catch (err) {
-        return console.log(err)        
+        return console.log(err)         
     }
 
     if(!existingUser){
@@ -111,7 +111,7 @@ export const login = async (req,res,next)=>{
         return res.status(400).json({message:"Incorrect Password"})
     }
 
-    return res.status(200).json({message: "Login Successful"})
+    return res.status(200).json({message: "Logged in Successfully", id:existingUser._id})
 }
 
 export const getBookingsOfUser  =async (req,res,next)=>{
