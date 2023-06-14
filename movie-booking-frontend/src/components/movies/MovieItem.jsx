@@ -25,6 +25,8 @@ const MovieItem = ({title, releaseDate, posterUrl, id}) => {
 
         <CardActions>
             <Button 
+                variant="contained"
+                fullWidth
                 sx={{ margin:"auto" }} 
                 size="small"
                 LinkComponent={Link}

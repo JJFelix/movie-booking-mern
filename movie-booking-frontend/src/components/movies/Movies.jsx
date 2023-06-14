@@ -11,6 +11,7 @@ const Movies = () => {
       .then((data)=>setMovies(data.movies))
       .catch((err)=>console.error(err))
   },[])
+
   return (
     <Box margin={'auto'} marginTop={4}>
       <Typography
@@ -31,16 +32,15 @@ const Movies = () => {
        display={'flex'} 
        justifyContent={'center'} 
        flexWrap={'wrap'}> 
-        {movies && 
-          movies.map((movie,index)=> 
-            <MovieItem 
-              key={index}
-              id={movie._id} 
-              posterUrl={movie.posterUrl}
-              releaseDate={movie.releaseDate}
-              title={movie.title}
-            />
-          )}
+        {movies && movies.map((movie,index)=> 
+          <MovieItem 
+            key={index}
+            id={movie._id} 
+            posterUrl={movie.posterUrl}
+            releaseDate={movie.releaseDate}
+            title={movie.title}
+          />
+        )}
       </Box>
     </Box>
   )
