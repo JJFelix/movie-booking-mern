@@ -111,10 +111,10 @@ export const login = async (req,res,next)=>{
         return res.status(400).json({message:"Incorrect Password"})
     }
 
-    return res.status(200).json({message: "Logged in Successfully", id:existingUser._id})
+    return res.status(200).json({message: "Login Complete", id:existingUser._id})
 }
 
-export const getBookingsOfUser  =async (req,res,next)=>{
+export const getBookingsOfUser  = async (req,res,next)=>{
     const {id} = req.params
     let bookings
 
@@ -129,4 +129,20 @@ export const getBookingsOfUser  =async (req,res,next)=>{
     }
 
     return res.status(200).json({bookings})
+}
+
+export const getOneUser = async(req,res,next)=>{
+    const {id} = req.params
+    let user
+    try {
+        user = await User.findById(id)
+    } catch (err) {
+        return console.log(err)
+    }
+
+    if(!user){
+        return res.status(500).json({message: `User with id ${id} not found`})
+    }
+
+    return res.status(200).json({ user })
 }

@@ -64,6 +64,21 @@ export const newBooking = async (req,res,next)=>{
     return res.status(200).json({booking})
 }
 
+export const getAllBookings = async(req,res,next) =>{
+    let bookings
+    try {
+        bookings = await Bookings.find()        
+    } catch (err) {
+        return console.error(err);        
+    }
+
+    if(!bookings){
+        return res.status(500).json({message: "Could not fetch bookings"})
+    }
+
+    return res.status(200).json({bookings})
+}
+
 export const getBookingsByID = async (req,res,next)=>{
     const {id}= req.params
     let booking
