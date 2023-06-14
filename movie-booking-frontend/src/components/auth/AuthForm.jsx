@@ -2,6 +2,7 @@ import { Button, Dialog, FormLabel, IconButton, TextField, Typography} from '@mu
 import { Box } from '@mui/system'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const labelStyle = {mt:1, mb:1}
 
@@ -26,14 +27,15 @@ const AuthForm = ({onSubmit, isAdmin}) => {
     }
 
   return (
-    <Dialog PaperProps={{style: {borderRadius:20}}} open={true}>
+    // PaperProps={{style: {borderRadius:20}}} open={true}
+    <Dialog PaperProps={{style: {borderRadius:20}}} open={true}> 
         <Box sx={{ml:"auto", padding:1}}>
-            <IconButton>
+            <IconButton LinkComponent={Link} to='/'>
                 <CloseRoundedIcon />
             </IconButton>            
         </Box>
 
-        <Typography variant='h4' textAlign={'center'}>
+        <Typography variant='h4' textAlign={'center'} mt={2}>
             {isSignUp ? "Signup" : "Login"}
         </Typography>
         
